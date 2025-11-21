@@ -54,6 +54,7 @@ public class Message {
         return hash;
     }
 
+    //launch quickchat
     public static void launchQuickChat() {
         messages = loadMessages();
 
@@ -85,6 +86,7 @@ public class Message {
         } while (choice != 4);
     }
 
+    //send messages
     public static void sendMessages() {
         System.out.print("How many messages do you want to send? ");
         int total = scanner.nextInt();
@@ -131,6 +133,7 @@ public class Message {
         System.out.println("Total messages sent: " + messages.size());
     }
 
+    //show messages
     public static void showMessages() {
         if (messages.isEmpty()) {
             JOptionPane.showMessageDialog(
@@ -163,6 +166,7 @@ public class Message {
         );
     }
 
+    //delete all messages
     public static void deleteAllMessages() {
         File file = new File("messages.json");
         if (file.exists()) {
@@ -177,6 +181,7 @@ public class Message {
         }
     }
 
+    //generate message ID
     public static String generateMessageID() {
         Random random = new Random();
         StringBuilder id = new StringBuilder();
@@ -186,10 +191,12 @@ public class Message {
         return id.toString();
     }
 
+    //check message ID
     public static boolean checkMessageID(String id) {
         return id != null && id.length() <= 10;
     }
 
+    //check cell
     public static int checkRecipientCell(String cell) {
         if (cell.startsWith("+") && cell.length() == 10) {
             return 1;
@@ -197,6 +204,7 @@ public class Message {
         return 0;
     }
 
+    //create message hash
     public static String createMessageHash(String id, String msg) {
         String[] words = msg.split(" ");
         String firstWord = words[0].toUpperCase();
@@ -204,6 +212,7 @@ public class Message {
         return id.substring(0, 2) + ":" + msg.length() + ":" + firstWord + lastWord;
     }
 
+    //store message
     public static void storeMessage(Message msg) {
         JSONObject obj = new JSONObject();
         obj.put("MessageID", msg.messageID);
@@ -223,6 +232,7 @@ public class Message {
         }
     }
 
+    //load message
     public static ArrayList<Message> loadMessages() {
         ArrayList<Message> loadedMessages = new ArrayList<>();
         File file = new File("messages.json");
@@ -254,6 +264,7 @@ public class Message {
         return loadedMessages;
     }
 
+    //diplay message
     public void displayMessage() {
         String details = "Message ID: " + messageID + "\n"
                 + "Hash: " + hash + "\n"

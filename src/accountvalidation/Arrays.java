@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  * github link: https://github.com/ST10440462/Programming-POE.git
- */ 
+ */
 package accountvalidation;
 
 /**
@@ -20,6 +20,7 @@ public class Arrays {
     public static final List<Message> storedMessages = new ArrayList<>();
     public static final List<Message> disregardedMessages = new ArrayList<>();
 
+    //Sent messages
     public static String displaySentMessages() {
         StringBuilder sb = new StringBuilder();
         for (Message m : sentMessages) {
@@ -31,6 +32,7 @@ public class Arrays {
         return sb.toString();
     }
 
+    //Longest sent messages
     public static Optional<Message> longestSentMessage() {
         if (sentMessages.isEmpty()) {
             return Optional.empty();
@@ -39,6 +41,7 @@ public class Arrays {
         return Optional.of(longest);
     }
 
+    //Search message ID
     public static Message searchByMessageID(String id) {
         for (Message m : sentMessages) {
             if (m.getMessageID().equals(id)) {
@@ -58,6 +61,7 @@ public class Arrays {
         return null;
     }
 
+    //Search recipient
     public static List<Message> searchByRecipient(String recipient) {
         List<Message> results = new ArrayList<>();
         for (Message m : sentMessages) {
@@ -100,6 +104,7 @@ public class Arrays {
         return false;
     }
 
+    //display report
     public static String displayReport() {
         StringBuilder sb = new StringBuilder();
         sb.append("Report: All sent messages\n");
